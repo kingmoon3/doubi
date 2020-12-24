@@ -137,6 +137,7 @@ Download_aria2_conf(){
 	echo '' > aria2.session
 	sed -i 's/^rpc-secret=Xujinwen520/rpc-secret='$(date +%s%N | md5sum | head -c 20)'/g' ${aria2_conf}
 	wget --no-check-certificate -N -P /root "https://raw.githubusercontent.com/kingmoon3/doubi/master/upload.sh" && chmod +x /root/upload.sh
+	wget --no-check-certificate -N -P /root "https://raw.githubusercontent.com/kingmoon3/doubi/master/ck.sh" && chmod +x /root/ck.sh
 }
 Service_aria2(){
 	if [[ ${release} = "centos" ]]; then
@@ -463,6 +464,7 @@ crontab_update_start(){
 	crontab -l > "$file_1/crontab.bak"
 	sed -i "/aria2.sh update-bt-tracker/d" "$file_1/crontab.bak"
 	echo -e "\n0 3 * * 1 /bin/bash $file_1/aria2.sh update-bt-tracker" >> "$file_1/crontab.bak"
+	echo -e "\n*/10 * * * * /bin/bash /root/ck.sh" >> "$file_1/crontab.bak"
 	crontab "$file_1/crontab.bak"
 	rm -f "$file_1/crontab.bak"
 	cron_config=$(crontab -l | grep "aria2.sh update-bt-tracker")

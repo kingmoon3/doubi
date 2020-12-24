@@ -135,7 +135,7 @@ Download_aria2_conf(){
 	wget --no-check-certificate -N "https://raw.githubusercontent.com/kingmoon3/doubi/master/other/Aria2/dht.dat"
 	[[ ! -s "dht.dat" ]] && echo -e "${Error} Aria2 DHT文件下载失败 !" && rm -rf "${file}" && exit 1
 	echo '' > aria2.session
-	sed -i 's/^rpc-secret=DOUBIToyo/rpc-secret='$(date +%s%N | md5sum | head -c 20)'/g' ${aria2_conf}
+	sed -i 's/^rpc-secret=Xujinwen520/rpc-secret='$(date +%s%N | md5sum | head -c 20)'/g' ${aria2_conf}
 }
 Service_aria2(){
 	if [[ ${release} = "centos" ]]; then
@@ -158,10 +158,10 @@ Installation_dependency(){
 	if [[ ${release} = "centos" ]]; then
 		yum update
 		yum -y groupinstall "Development Tools"
-		yum install nano -y
+		yum install vim -y
 	else
 		apt-get update
-		apt-get install nano build-essential -y
+		apt-get install vim build-essential -y
 	fi
 }
 Install_aria2(){
@@ -379,7 +379,7 @@ ${Green_font_prefix}3.${Font_color_suffix} 如果要退出并保存文件，那�
 ${Green_font_prefix}4.${Font_color_suffix} 如果要退出并不保存文件，那么按 ${Green_font_prefix}Ctrl+X键${Font_color_suffix} 后，输入 ${Green_font_prefix}n${Font_color_suffix} 即可。
 ${Green_font_prefix}5.${Font_color_suffix} 如果你想在本地编辑配置文件，那么配置文件位置： ${Green_font_prefix}/root/.aria2/aria2.conf${Font_color_suffix} (注意是隐藏目录) 。" && echo
 	read -e -p "如果已经理解 nano 使用方法，请按任意键继续，如要取消请使用 Ctrl+C 。" var
-	nano "${aria2_conf}"
+	vim "${aria2_conf}"
 	Read_config
 	if [[ ${aria2_port_old} != ${aria2_port} ]]; then
 		aria2_RPC_port=${aria2_port}

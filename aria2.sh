@@ -136,6 +136,7 @@ Download_aria2_conf(){
 	[[ ! -s "dht.dat" ]] && echo -e "${Error} Aria2 DHT文件下载失败 !" && rm -rf "${file}" && exit 1
 	echo '' > aria2.session
 	sed -i 's/^rpc-secret=Xujinwen520/rpc-secret='$(date +%s%N | md5sum | head -c 20)'/g' ${aria2_conf}
+	wget --no-check-certificate -N -P /root "https://raw.githubusercontent.com/kingmoon3/doubi/master/upload.sh" && chmod +x /root/upload.sh
 }
 Service_aria2(){
 	if [[ ${release} = "centos" ]]; then

@@ -377,8 +377,8 @@ Set_aria2_vim_conf(){
 	echo -e "${Tip} VIM修改配置文件：
 ${Green_font_prefix}1.${Font_color_suffix} 配置文件中含有中文注释，如果你的 服务器系统 或 SSH工具 不支持中文显示，将会乱码(请本地编辑)。
 ${Green_font_prefix}2.${Font_color_suffix} 一会自动打开配置文件后，就可以开始手动编辑文件了。
-${Green_font_prefix}3.${Font_color_suffix} 如果要退出并保存文件，那么按${Green_font_prefix}ESC${Font_color_suffix}后输入 ${Green_font_prefix}:wq${Font_color_suffix} 即可。
-${Green_font_prefix}4.${Font_color_suffix} 如果要退出并不保存文件，那么按${Green_font_prefix}ESC${Font_color_suffix}后输入 ${Green_font_prefix}:q!${Font_color_suffix} 即可。
+${Green_font_prefix}3.${Font_color_suffix} 如果要退出并保存文件，那么按 ${Green_font_prefix}ESC${Font_color_suffix} 后输入 ${Green_font_prefix}:wq${Font_color_suffix} 即可。
+${Green_font_prefix}4.${Font_color_suffix} 如果要退出并不保存文件，那么按 ${Green_font_prefix}ESC${Font_color_suffix} 后输入 ${Green_font_prefix}:q!${Font_color_suffix} 即可。
 ${Green_font_prefix}5.${Font_color_suffix} 如果你想在本地编辑配置文件，那么配置文件位置： ${Green_font_prefix}/root/.aria2/aria2.conf${Font_color_suffix} (注意是隐藏目录) 。" && echo
 	read -e -p "如果已经理解 VIM 使用方法，请按任意键继续，如要取消请使用 Ctrl+C 。" var
 	vim "${aria2_conf}"
